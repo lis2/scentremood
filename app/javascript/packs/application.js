@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded",function(){
           "axisAlpha": 0,
           "position": "left",
           "integersOnly": true,
-          "ignoreAxisWidth":true
+          "ignoreAxisWidth":true,
       }],
       "balloon": {
           "borderThickness": 1,
@@ -51,7 +51,8 @@ document.addEventListener("DOMContentLoaded",function(){
           "useLineColorForBulletBorder": true,
           "valueField": "value",
           "showBalloon": false,
-          "balloonText": "<span style='font-size:18px;'>[[value]]</span>"
+          "balloonText": "<span style='font-size:18px;'>[[value]]</span>",
+
       }],
       "chartScrollbar": {
           "graph": "g1",
@@ -90,6 +91,39 @@ document.addEventListener("DOMContentLoaded",function(){
       "dataProvider": data
   });
 
+  function modifyAxis(e) {
+    var axes = e.chart.valueAxes;
+    for (let i1 in axes) {
+      var labels = axes[i1].allLabels;
+      var parent = labels[0].node.parentNode;
+
+      for (let i2 in labels) {
+        var label = labels[i2].node;
+        if(label.getAttribute('transform') !== '') {
+          var group = document.createElementNS('http://www.w3.org/2000/svg', "g");
+          var img = document.createElementNS('http://www.w3.org/2000/svg', "image");
+          // Setup image
+          img.setAttribute('x', '-25');
+          img.setAttribute('y', '-17'); // half the height
+          img.setAttribute('width', '34');
+          img.setAttribute('height', '34');
+          let number = label.children.item(0).innerHTML
+          img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', `/images/${number}.svg`);
+
+          // Swap position to group; remove from label
+          group.setAttribute('transform', label.getAttribute('transform'));        
+          label.setAttribute('transform', '');
+
+          // Group axis labels
+          group.appendChild(img);
+          parent.appendChild(group);
+        }
+
+      }
+    }
+  }
+  chart.addListener("drawn", modifyAxis);
+  chart.addListener("zoomed", modifyAxis);
   chart.addListener("rendered", zoomChart);
   var balloon = chart.balloon
   zoomChart();
