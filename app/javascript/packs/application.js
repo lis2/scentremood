@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded",function(){
           "id": "v1",
           "axisAlpha": 0,
           "position": "left",
+          "integersOnly": true,
           "ignoreAxisWidth":true
       }],
       "balloon": {
@@ -49,6 +50,7 @@ document.addEventListener("DOMContentLoaded",function(){
           "title": "red line",
           "useLineColorForBulletBorder": true,
           "valueField": "value",
+          "showBalloon": false,
           "balloonText": "<span style='font-size:18px;'>[[value]]</span>"
       }],
       "chartScrollbar": {
@@ -68,18 +70,13 @@ document.addEventListener("DOMContentLoaded",function(){
       },
       "chartCursor": {
           "pan": true,
-          "valueLineEnabled": true,
-          "valueLineBalloonEnabled": true,
+          "valueLineEnabled": false,
+          "valueLineBalloonEnabled": false,
           "cursorAlpha":1,
           "cursorColor":"#258cbb",
           "limitToGraph":"g1",
           "valueLineAlpha":0.2,
           "valueZoomable":true
-      },
-      "valueScrollbar":{
-        "oppositeAxis":false,
-        "offset":50,
-        "scrollbarHeight":10
       },
       "categoryField": "date",
       "categoryAxis": {
@@ -94,7 +91,7 @@ document.addEventListener("DOMContentLoaded",function(){
   });
 
   chart.addListener("rendered", zoomChart);
-
+  var balloon = chart.balloon
   zoomChart();
 
   function zoomChart() {
