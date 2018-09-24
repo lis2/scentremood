@@ -15,6 +15,10 @@ class Api::MoodsController < ApplicationController
   end
 
   def show
+    mood = Mood.find_by(uid: params[:uid], date: Date.today.strftime('%Y-%m-%d'))
+    respond_to do |format|
+      format.json { render json: { status: 200, mood: mood } }
+    end
   end
 
   private
