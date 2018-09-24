@@ -1,8 +1,4 @@
-<i class="far fa-frown" />
-<i class="far fa-flushed" />
-<i class="far fa-meh" />
-<i class="far fa-smile" />
-<i class="far fa-grin-stars" />
 <%= content_tag "div", id: "graph", data: @moods.to_json do %>
-  ... graph ...
+
 <% end %>
+<canvas id="myChart" width="400" height="400"></canvas>

@@ -1,5 +1,13 @@
 {
   "name": "scentremood",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "3.5",
+    "amcharts3": "^3.21.13",
+    "chart.js": "^2.7.2",
+    "chartjs": "^0.3.24"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
+  }
 }
