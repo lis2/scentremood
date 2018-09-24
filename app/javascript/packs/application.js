@@ -652,3 +652,11 @@ var chart = AmCharts.makeChart("graph", {
         "value": 81
     }]
 });
+
+chart.addListener("rendered", zoomChart);
+
+zoomChart();
+
+function zoomChart() {
+    chart.zoomToIndexes(chart.dataProvider.length - 40, chart.dataProvider.length - 1);
+}
