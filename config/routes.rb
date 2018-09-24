@@ -3,4 +3,5 @@ Rails.application.routes.draw do
     get '/moods/:uid', to: 'moods#show'
     post '/moods', to: 'moods#create'
   end
+  get '/history/:uid', to: 'history#show'
 end
