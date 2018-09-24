@@ -1,12 +1,19 @@
 <style>
   #mood svg {
-    width: 43px;
+    width: 38px;
+      margin-right: 7px;
   }
   #mood a {
     cursor: hand;
   }
-  #mood svg:hover path.cls-2 {
+  #mood svg:hover path {
     fill: #c82127;
+  }
+  #mood a.active svg path {
+    fill: #008080;
+  }
+  #mood a.passive svg path {
+    fill: #d6d6d6;
   }
   #mood h1 {
     background-color: #ebeef0;
@@ -15,7 +22,7 @@
     font-family: Georgia;
   }
   #mood {
-    padding: 10px 15px 25px 15px;
+    padding: 10px 15px 30px 15px;
     background-color: #ebeef0;
     width: 251px;
   }
@@ -25,6 +32,8 @@
     color: #5b5b5b;
     font-size: 14px;
     text-decoration: none;
+    margin-top: 8px;
+    margin-right: 13px;
   }
   #mood a.history:hover {
     color: #53A39A;
@@ -32,31 +41,58 @@
 </style>
 <div id="mood">
   <h1>How do you feel today?</h1>
-  <a onclick="markMood(1)">
-    <svg data-name="Layer 1" id="Layer_1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#fecc09;}.cls-2{fill:#1a1818;}</style></defs><title/><path class="cls-1" d="M80.35,50A30.35,30.35,0,1,1,50,19.65,30.38,30.38,0,0,1,80.35,50Z"/><path class="cls-2" d="M50,9.65A40.35,40.35,0,0,0,24.18,81,40.14,40.14,0,0,0,50,90.35a40.35,40.35,0,0,0,0-80.7Zm0,70.7A30.35,30.35,0,1,1,80.35,50,30.27,30.27,0,0,1,50,80.35Z"/><path class="cls-2" d="M27,39.73a26.2,26.2,0,0,0,5.62.08A26,26,0,0,0,36.72,39a29.39,29.39,0,0,0,3.9-1.4,27.32,27.32,0,0,0,4.82-2.89,7.6,7.6,0,0,1-1,6.82,10.46,10.46,0,0,1-13.16,3.56A7.61,7.61,0,0,1,27,39.73Z"/><path class="cls-2" d="M54.51,34.75a26.69,26.69,0,0,0,4.83,2.91,25.77,25.77,0,0,0,3.92,1.39,26.38,26.38,0,0,0,4.09.75A28,28,0,0,0,73,39.7a7.61,7.61,0,0,1-4.28,5.43,10.46,10.46,0,0,1-13.2-3.55A7.61,7.61,0,0,1,54.51,34.75Z"/><path class="cls-2" d="M35,69.31c-.67-3.77,1-7.66,3.87-10.43a16.22,16.22,0,0,1,22.25,0C64,61.64,65.67,65.53,65,69.31a31.24,31.24,0,0,0-8.19-3.88,25.36,25.36,0,0,0-6.8-1,24.68,24.68,0,0,0-6.81,1A30.49,30.49,0,0,0,35,69.31Z"/></svg>
+  <a onclick="markMood(1)" id="mood1">
+    <svg aria-hidden="true" data-prefix="far" data-icon="frown" class="svg-inline--fa fa-frown fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 200 200-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm160-64c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zm-80 128c-40.2 0-78 17.7-103.8 48.6-8.5 10.2-7.1 25.3 3.1 33.8 10.2 8.4 25.3 7.1 33.8-3.1 16.6-19.9 41-31.4 66.9-31.4s50.3 11.4 66.9 31.4c8.1 9.7 23.1 11.9 33.8 3.1 10.2-8.5 11.5-23.6 3.1-33.8C326 321.7 288.2 304 248 304z"></path></svg>
+
   </a>
-  <a onclick="markMood(2)">
-    <svg data-name="Layer 1" id="Layer_1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#fecc09;}.cls-2{fill:#1a1818;}</style></defs><title/><circle class="cls-1" cx="50" cy="50" r="30.35" transform="translate(-10.15 87.17) rotate(-76.72)"/><path class="cls-2" d="M50,9.65A40.35,40.35,0,1,0,90.35,50,40.39,40.39,0,0,0,50,9.65Zm0,70.7A30.35,30.35,0,1,1,80.35,50,30.39,30.39,0,0,1,50,80.35Z"/><rect class="cls-2" height="10" width="30.55" x="34.73" y="55.79"/><path class="cls-2" d="M46.82,36.37a7.68,7.68,0,1,1-15.35,0Z"/><path class="cls-2" d="M68.53,36.37a7.68,7.68,0,1,1-15.35,0Z"/></svg>
+  <a onclick="markMood(2)" id="mood2">
+<svg aria-hidden="true" data-prefix="far" data-icon="flushed" class="svg-inline--fa fa-flushed fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 200 200-89.7 200-200 200zm96-312c-44.2 0-80 35.8-80 80s35.8 80 80 80 80-35.8 80-80-35.8-80-80-80zm0 128c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm0-72c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24zm-112 24c0-44.2-35.8-80-80-80s-80 35.8-80 80 35.8 80 80 80 80-35.8 80-80zm-80 48c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm0-72c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24zm160 144H184c-13.2 0-24 10.8-24 24s10.8 24 24 24h128c13.2 0 24-10.8 24-24s-10.8-24-24-24z"></path></svg>
   </a>
-  <a onclick="markMood(3)">
-    <svg data-name="Layer 1" id="Layer_1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#fecc09;}.cls-2{fill:#1a1818;}</style></defs><title/><circle class="cls-1" cx="50" cy="50" r="30.35" transform="translate(-15.33 22.94) rotate(-22.5)"/><path class="cls-2" d="M50,9.65A40.35,40.35,0,1,0,90.35,50,40.39,40.39,0,0,0,50,9.65Zm0,70.7A30.35,30.35,0,1,1,80.35,50,30.39,30.39,0,0,1,50,80.35Z"/><circle class="cls-2" cx="61.02" cy="39.33" r="5.5"/><circle class="cls-2" cx="38.98" cy="39.33" r="5.5"/><rect class="cls-2" height="10" transform="translate(-7.02 6.64) rotate(-7)" width="31.52" x="35.01" y="55.68"/></svg>
+  <a onclick="markMood(3)" id="mood3">
+<svg aria-hidden="true" data-prefix="far" data-icon="meh" class="svg-inline--fa fa-meh fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 200 200-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm160-64c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zm8 144H160c-13.2 0-24 10.8-24 24s10.8 24 24 24h176c13.2 0 24-10.8 24-24s-10.8-24-24-24z"></path></svg>
   </a>
-  <a onclick="markMood(4)">
-    <svg data-name="Layer 1" id="Layer_1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#fecc09;}.cls-2{fill:#1a1818;}</style></defs><title/><circle class="cls-1" cx="50" cy="50" r="30.35" transform="translate(-15.33 22.94) rotate(-22.5)"/><path class="cls-2" d="M50,9.65A40.35,40.35,0,1,0,90.35,50,40.39,40.39,0,0,0,50,9.65Zm0,70.7A30.35,30.35,0,1,1,80.35,50,30.39,30.39,0,0,1,50,80.35Z"/><circle class="cls-2" cx="38.98" cy="39.33" r="5.5"/><circle class="cls-2" cx="61.02" cy="39.33" r="5.5"/><path class="cls-2" d="M65,54.5c.67,3.78-1,7.66-3.87,10.44a16.25,16.25,0,0,1-22.25,0C36,62.18,34.33,58.28,35,54.5a30.61,30.61,0,0,0,8.19,3.88,25,25,0,0,0,6.8,1,24.7,24.7,0,0,0,6.81-1A30.49,30.49,0,0,0,65,54.5Z"/></svg>
+  <a onclick="markMood(4)" id="mood4">
+<svg aria-hidden="true" data-prefix="far" data-icon="smile" class="svg-inline--fa fa-smile fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 200 200-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm160 0c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84 39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1-10.2 8.5-11.5 23.6-3.1 33.8 30 36 74.1 56.6 120.9 56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8-10.1-8.4-25.3-7.1-33.8 3.1z"></path></svg>
   </a>
-  <a onclick="markMood(5)">
-    <svg data-name="Layer 1" id="Layer_1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#fecc09;}.cls-2{fill:#1a1818;}.cls-3{fill:#ef6538;}</style></defs><title/><path class="cls-1" d="M80.35,50A30.35,30.35,0,1,1,50,19.65,30.39,30.39,0,0,1,80.35,50Z"/><path class="cls-2" d="M50,9.65A40.35,40.35,0,1,0,90.35,50,40.39,40.39,0,0,0,50,9.65Zm0,70.7A30.35,30.35,0,1,1,80.35,50,30.39,30.39,0,0,1,50,80.35Z"/><path class="cls-2" d="M65.35,57.58a15.32,15.32,0,0,1-4.73,11.07,15.32,15.32,0,0,0-21.24,0,15.32,15.32,0,0,1-4.73-11.07Z"/><path class="cls-3" d="M58.6,49.3l-5.12-11a4.5,4.5,0,1,1,8.15-3.81L63,37.35,65.76,36a4.5,4.5,0,1,1,3.8,8.16Z"/><path class="cls-3" d="M41.41,49.3l-11-5.1A4.5,4.5,0,1,1,34.24,36l2.82,1.31,1.32-2.82a4.5,4.5,0,1,1,8.15,3.81Z"/><ellipse class="cls-3" cx="50" cy="68.64" rx="10.62" ry="4.28"/></svg>
+  <a onclick="markMood(5)" id="mood5">
+<svg aria-hidden="true" data-prefix="far" data-icon="grin-stars" class="svg-inline--fa fa-grin-stars fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 200 200-89.7 200-200 200zm105.6-151.4c-25.9 8.3-64.4 13.1-105.6 13.1s-79.6-4.8-105.6-13.1c-9.8-3.1-19.4 5.3-17.7 15.3 7.9 47.2 71.3 80 123.3 80s115.3-32.9 123.3-80c1.6-9.8-7.7-18.4-17.7-15.3zm-227.9-57.5c-1 6.2 5.4 11 11 7.9l31.3-16.3 31.3 16.3c5.6 3.1 12-1.7 11-7.9l-6-34.9 25.4-24.6c4.5-4.5 1.9-12.2-4.3-13.2l-34.9-5-15.5-31.6c-2.9-5.8-11-5.8-13.9 0l-15.5 31.6-34.9 5c-6.2.9-8.9 8.6-4.3 13.2l25.4 24.6-6.1 34.9zm259.7-72.7l-34.9-5-15.5-31.6c-2.9-5.8-11-5.8-13.9 0l-15.5 31.6-34.9 5c-6.2.9-8.9 8.6-4.3 13.2l25.4 24.6-6 34.9c-1 6.2 5.4 11 11 7.9l31.3-16.3 31.3 16.3c5.6 3.1 12-1.7 11-7.9l-6-34.9 25.4-24.6c4.5-4.6 1.8-12.2-4.4-13.2z"></path></svg>
   </a>
-  <a href="http://localhost:3000/fsdfa/stats" class="history">History</a>
+  <a href="http://localhost:3000/history/432432432432423" class="history">How have I been feeling?</a>
 </div>
 
  <script>
    var uid = "321342132423432432423423";
    var markMood = function (mood) {
-     httpRequest = new XMLHttpRequest();
-     httpRequest.open('POST', 'http://localhost:3000/api/moods');
-     httpRequest.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-     httpRequest.send("uid=" + uid + "&mood=" + mood + "&date=" + today());
+     var http = new XMLHttpRequest();
+     http.open('POST', 'http://localhost:3000/api/moods');
+     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+     http.send("uid=" + uid + "&mood=" + mood + "&date=" + today());
+     http.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              currentMood()
+              }
+        }
+   }
+
+   var currentMood = function() {
+     var http = new XMLHttpRequest();
+     http.open('GET', 'http://localhost:3000/api/moods/' + uid, true);
+     http.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              var response = JSON.parse(this.responseText)
+              if(response.mood && response.mood.mood) {
+                var all = ['mood1', 'mood2', 'mood3', 'mood4', 'mood5']
+                for (i = 0; i < all.length; i++) { 
+                  document.getElementById(all[i]).classList.add("passive")
+                  document.getElementById(all[i]).classList.remove("active")
+                }
+                var active = document.getElementById("mood" + response.mood.mood)
+                active.classList.add("active");
+                active.classList.remove("passive");
+              }
+        }
+     }
+     http.send()
    }
 
    var today = function() {
@@ -65,5 +101,6 @@
        ('0' + (today.getMonth()+1)).slice(-2) + '-' +
        ('0' + today.getDate()).slice(-2)
    }
+   currentMood()
  </script>
 
