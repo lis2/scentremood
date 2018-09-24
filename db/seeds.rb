@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+((Date.today - 60)..Date.today).each do |date|
+  Mood.create!(uid: "testsecretuid", mood: rand(4) + 1, date: date)
+end
