@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_23_231530) do
+ActiveRecord::Schema.define(version: 2018_09_24_001212) do
 
   create_table "moods", force: :cascade do |t|
     t.string "uid"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_231530) do
     t.integer "mood", limit: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["uid"], name: "index_uid_on_moods"
   end
 
 end
