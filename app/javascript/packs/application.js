@@ -8,13 +8,14 @@
 // layout file, like app/views/layouts/application.html.erb
 import 'amcharts3'
 import 'amcharts3/amcharts/serial'
+import 'amcharts3/amcharts/pie'
 import 'amcharts3/amcharts/themes/light'
 
 document.addEventListener("DOMContentLoaded",function(){
-  const graphDiv = document.getElementById('graph')
-  const data = JSON.parse(graphDiv.dataset.moods)
+  const dataDiv = document.getElementById('line-graph')
+  const data = JSON.parse(dataDiv.dataset.moods)
   console.log(data)
-  var chart = AmCharts.makeChart('graph', {
+  var chart = AmCharts.makeChart('line-graph', {
       "type": "serial",
       "theme": "light",
       "marginRight": 40,
@@ -111,7 +112,7 @@ document.addEventListener("DOMContentLoaded",function(){
           img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', `/images/${number}.svg`);
 
           // Swap position to group; remove from label
-          group.setAttribute('transform', label.getAttribute('transform'));        
+          group.setAttribute('transform', label.getAttribute('transform'));
           label.setAttribute('transform', '');
 
           // Group axis labels
@@ -123,7 +124,7 @@ document.addEventListener("DOMContentLoaded",function(){
     }
   }
   chart.addListener("drawn", modifyAxis);
-  chart.addListener("zoomed", modifyAxis);
+  //chart.addListener("zoomed", modifyAxis);
   chart.addListener("rendered", zoomChart);
   var balloon = chart.balloon
   zoomChart();
@@ -131,4 +132,23 @@ document.addEventListener("DOMContentLoaded",function(){
   function zoomChart() {
       chart.zoomToIndexes(chart.dataProvider.length - 40, chart.dataProvider.length - 1);
   }
+
+  const donutDataDiv = document.getElementById('donut-graph')
+  const donutData = JSON.parse(donutDataDiv.dataset.moods)
+  console.log(donutData)
+  var donutChart = AmCharts.makeChart( "donut-graph", {
+    "type": "pie",
+    "theme": "light",
+    "dataProvider": donutData,
+    "titleField": "title",
+    "valueField": "value",
+    "labelRadius": 5,
+
+    "radius": "42%",
+    "innerRadius": "60%",
+    "labelText": "[[title]]",
+    "export": {
+      "enabled": true
+    }
+  })
 })

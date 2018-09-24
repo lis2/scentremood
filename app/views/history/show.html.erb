@@ -1,3 +1,14 @@
-<%= content_tag "div", id: "graph", style: 'width: 100%; height: 600px;', data: { moods: @moods.map { |m| { value: m.mood, date: m.date } }.to_json.html_safe } do %>
+<%= content_tag "div", id: "line-graph", style: 'width: 70%; height: 600px; float: left;', data: { moods: @moods.map { |m| { value: m.mood, date: m.date } }.to_json.html_safe } do %>
 
 <% end %>
+
+<%= content_tag "div", id: "donut-graph", data: { moods: @pie_moods.map { |key, value| { title: key, value: value } }.to_json.html_safe } do %>
+
+<% end %>
+<div id="donut-legend" style="">
+<span>1 <img src="/images/1.svg" style="width: 18px;" /></span>
+<span>2 <img src="/images/2.svg" style="width: 18px;" /></span>
+<span>3 <img src="/images/3.svg" style="width: 18px;" /></span>
+<span>4 <img src="/images/4.svg" style="width: 18px;" /></span>
+<span>5 <img src="/images/5.svg" style="width: 18px;" /></span>
+</div>

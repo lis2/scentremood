@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+ #donut-graph {
+   width: 30%;
+   float: right;
+   height: 560px;
+ }
+ #line-graph {
+   width: 70%;
+   height: 600px;
+   float: left;
+ }
+#donut-legend {
+  width: 30%;
+  float: right;
+  text-align: center;
+}
+#donut-legend span {
+  margin-right: 15px;
+}
+#donut-legend img {
+  position: relative;
+  top: 3px;
+}
