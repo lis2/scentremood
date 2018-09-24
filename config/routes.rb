@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  resources :moods, only: [:post, :get]
+  get '/moods/:id', to: 'moods#show'
+  post '/moods', to: 'moods#create'
 end
